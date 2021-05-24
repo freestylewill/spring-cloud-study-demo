@@ -1,0 +1,35 @@
+spring:
+    application:
+        name: majun-config-server
+    profiles:
+        active: native #使用本地配置
+    cloud:
+        config:
+            server:
+                native:
+                    search-locations: file:D:\\data\\config-repo\\
+                    #   classpath: config-repo/ # 搜索src/main/resource 下的config-repo文件夹下的文件
+                    #   git配置
+                    #        git:
+                    #          uri: https://gitee.com/ifrozen/spring-cloud-demo
+                    #          search-paths:
+                    #          - config-repo
+                    #          username: username
+                    #          password: password
+                    #          label: master
+
+#---------------------------------------------------------------------
+server:
+    port: 5000
+#---------------------------------------------------------------------
+#eureka:
+#    instance:
+#        prefer-ip-address: true
+#        status-page-url-path: /actuator/info
+#        health-check-url-path: /actuator/health
+#        hostname: localhost
+#    client:
+#        register-with-eureka: true #把本服务也注册到注册中心，从注册中心的服务列表中可以看到本服务
+#        fetch-registry: true #从注册中心拉取服务列表
+#        service-url:
+#            defaultZone: http://localhost:50000/eureka/

@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: majun-client
+  cloud:
+    config:
+      label: master
+      profile: dev
+      uri: http://localhost:5000/
+#spring.cloud.config.uri=http://localhost:8888/
+#server.port=8088

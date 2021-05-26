@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: cloud-gateway-router
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: service_customer
+          uri: lb://CONSUMER
+          order: 0
+          predicates:
+            - Path=/customer/**
+          filters:
+            - StripPrefix=1
+      httpclient:
+        pool:
+          acquire-timeout: 10000
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+server:
+  port: 10000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7000/eureka/
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+    com.windmt.filter: debug
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
